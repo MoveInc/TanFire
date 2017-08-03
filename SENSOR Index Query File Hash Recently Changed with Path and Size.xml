@@ -1,0 +1,570 @@
+<!-- Exported using version "7_0_314_6194" on Tuesday, March 21, 2017 3:14:18 PM -->
+<content>
+    <sensor>
+        <name>Index Query File Hash Recently Changed with Path and Size</name>
+        <what_hash>2205352808</what_hash>
+        <category>Index</category>
+        <description>Returns filename and hash(es) of file created or modified in previous N hours.</description>
+        <parameters>
+            <parameter_text>{&quot;parameters&quot;:[{&quot;parameterType&quot;:&quot;com.tanium.components.parameters::TextInputParameter&quot;,&quot;model&quot;:&quot;com.tanium.components.parameters::TextInputParameter&quot;,&quot;key&quot;:&quot;directoryPath&quot;,&quot;validationExpressions&quot;:[{&quot;expression&quot;:&quot;.*&quot;,&quot;helpString&quot;:&quot;&quot;,&quot;model&quot;:&quot;com.tanium.models::ValidationExpression&quot;,&quot;parameterType&quot;:&quot;com.tanium.models::ValidationExpression&quot;}],&quot;label&quot;:&quot;Directory Path&quot;,&quot;helpString&quot;:&quot;Glob of directory name used for searching, e.g. *Windows*&quot;,&quot;promptText&quot;:&quot;Glob of directory name used for searching&quot;,&quot;maxChars&quot;:0,&quot;defaultValue&quot;:&quot;*&quot;},{&quot;parameterType&quot;:&quot;com.tanium.components.parameters::TextInputParameter&quot;,&quot;model&quot;:&quot;com.tanium.components.parameters::TextInputParameter&quot;,&quot;key&quot;:&quot;fileName&quot;,&quot;validationExpressions&quot;:[{&quot;expression&quot;:&quot;.*&quot;,&quot;helpString&quot;:&quot;&quot;,&quot;model&quot;:&quot;com.tanium.models::ValidationExpression&quot;,&quot;parameterType&quot;:&quot;com.tanium.models::ValidationExpression&quot;}],&quot;label&quot;:&quot;File Name&quot;,&quot;helpString&quot;:&quot;Glob of file name used for searching, e.g. *exe&quot;,&quot;promptText&quot;:&quot;Glob of file name used for index searching&quot;,&quot;maxChars&quot;:0,&quot;defaultValue&quot;:&quot;*&quot;},{&quot;parameterType&quot;:&quot;com.tanium.components.parameters::TextInputParameter&quot;,&quot;model&quot;:&quot;com.tanium.components.parameters::TextInputParameter&quot;,&quot;key&quot;:&quot;fileSize&quot;,&quot;validationExpressions&quot;:[{&quot;expression&quot;:&quot;.*&quot;,&quot;helpString&quot;:&quot;&quot;,&quot;model&quot;:&quot;com.tanium.models::ValidationExpression&quot;,&quot;parameterType&quot;:&quot;com.tanium.models::ValidationExpression&quot;}],&quot;label&quot;:&quot;File Size (Bytes)&quot;,&quot;helpString&quot;:&quot;Glob of file size used for searching, e.g. 10??&quot;,&quot;promptText&quot;:&quot;Glob of file size used for index searching&quot;,&quot;maxChars&quot;:0,&quot;defaultValue&quot;:&quot;*&quot;},{&quot;parameterType&quot;:&quot;com.tanium.components.parameters::TextInputParameter&quot;,&quot;model&quot;:&quot;com.tanium.components.parameters::TextInputParameter&quot;,&quot;key&quot;:&quot;fileMD5Hash&quot;,&quot;validationExpressions&quot;:[{&quot;expression&quot;:&quot;.*&quot;,&quot;helpString&quot;:&quot;&quot;,&quot;model&quot;:&quot;com.tanium.models::ValidationExpression&quot;,&quot;parameterType&quot;:&quot;com.tanium.models::ValidationExpression&quot;}],&quot;label&quot;:&quot;File MD5 Hash&quot;,&quot;helpString&quot;:&quot;Glob of file MD5 hash used for searching, e.g. 1c7b*&quot;,&quot;promptText&quot;:&quot;Glob of file MD5 hash used for searching&quot;,&quot;maxChars&quot;:0,&quot;defaultValue&quot;:&quot;*&quot;},{&quot;parameterType&quot;:&quot;com.tanium.components.parameters::TextInputParameter&quot;,&quot;model&quot;:&quot;com.tanium.components.parameters::TextInputParameter&quot;,&quot;key&quot;:&quot;fileSHA1Hash&quot;,&quot;validationExpressions&quot;:[{&quot;expression&quot;:&quot;.*&quot;,&quot;helpString&quot;:&quot;&quot;,&quot;model&quot;:&quot;com.tanium.models::ValidationExpression&quot;,&quot;parameterType&quot;:&quot;com.tanium.models::ValidationExpression&quot;}],&quot;label&quot;:&quot;File SHA1 Hash&quot;,&quot;helpString&quot;:&quot;Glob of file SHA1 hash used for searching, e.g. 1c7b*&quot;,&quot;promptText&quot;:&quot;Glob of file SHA1 hash used for searching&quot;,&quot;maxChars&quot;:0,&quot;defaultValue&quot;:&quot;*&quot;},{&quot;parameterType&quot;:&quot;com.tanium.components.parameters::TextInputParameter&quot;,&quot;model&quot;:&quot;com.tanium.components.parameters::TextInputParameter&quot;,&quot;key&quot;:&quot;fileSHA256Hash&quot;,&quot;validationExpressions&quot;:[{&quot;expression&quot;:&quot;.*&quot;,&quot;helpString&quot;:&quot;&quot;,&quot;model&quot;:&quot;com.tanium.models::ValidationExpression&quot;,&quot;parameterType&quot;:&quot;com.tanium.models::ValidationExpression&quot;}],&quot;label&quot;:&quot;File SHA256 Hash&quot;,&quot;helpString&quot;:&quot;Glob of file SHA256 hash used for searching, e.g. 1c7b*&quot;,&quot;promptText&quot;:&quot;Glob of file SHA256 hash used for searching&quot;,&quot;maxChars&quot;:0,&quot;defaultValue&quot;:&quot;*&quot;},{&quot;parameterType&quot;:&quot;com.tanium.components.parameters::TextInputParameter&quot;,&quot;model&quot;:&quot;com.tanium.components.parameters::TextInputParameter&quot;,&quot;key&quot;:&quot;magicNumber&quot;,&quot;validationExpressions&quot;:[{&quot;expression&quot;:&quot;.*&quot;,&quot;helpString&quot;:&quot;&quot;,&quot;model&quot;:&quot;com.tanium.models::ValidationExpression&quot;,&quot;parameterType&quot;:&quot;com.tanium.models::ValidationExpression&quot;}],&quot;label&quot;:&quot;File Magic Number&quot;,&quot;helpString&quot;:&quot;Glob of file SHA1 hash used for searching, 4D5A*&quot;,&quot;promptText&quot;:&quot;Glob of file SHA1 hash used for searching&quot;,&quot;maxChars&quot;:0,&quot;defaultValue&quot;:&quot;*&quot;},{&quot;parameterType&quot;:&quot;com.tanium.components.parameters::NumericParameter&quot;,&quot;model&quot;:&quot;com.tanium.components.parameters::NumericParameter&quot;,&quot;key&quot;:&quot;lookBkHrs&quot;,&quot;label&quot;:&quot;Lookback Hours&quot;,&quot;helpString&quot;:&quot;Return files created or modified within previous given hours (168 max.)&quot;,&quot;minimum&quot;:1,&quot;maximum&quot;:168,&quot;stepSize&quot;:6,&quot;snapInterval&quot;:1,&quot;defaultValue&quot;:12},{&quot;parameterType&quot;:&quot;com.tanium.components.parameters::NumericParameter&quot;,&quot;model&quot;:&quot;com.tanium.components.parameters::NumericParameter&quot;,&quot;key&quot;:&quot;limit&quot;,&quot;label&quot;:&quot;Maximum number of rows to return&quot;,&quot;helpString&quot;:&quot;Maximum number of rows to return per host&quot;,&quot;minimum&quot;:1,&quot;maximum&quot;:300,&quot;stepSize&quot;:1,&quot;snapInterval&quot;:1,&quot;defaultValue&quot;:10},{&quot;parameterType&quot;:&quot;com.tanium.components.parameters::CheckBoxParameter&quot;,&quot;model&quot;:&quot;com.tanium.components.parameters::CheckBoxParameter&quot;,&quot;key&quot;:&quot;excludeTCEntries&quot;,&quot;label&quot;:&quot;Exclude Tanium Entries&quot;,&quot;helpString&quot;:&quot;Exclude files that have been created or modified under the Tanium Client path&quot;,&quot;defaultValue&quot;:1}],&quot;model&quot;:&quot;com.tanium.components.parameters::ParametersArray&quot;,&quot;parameterType&quot;:&quot;com.tanium.components.parameters::ParametersArray&quot;}</parameter_text>
+        </parameters>
+        <result_type>1</result_type>
+        <qseconds>900</qseconds>
+        <ignore_case_flag>1</ignore_case_flag>
+        <exclude_from_parse>1</exclude_from_parse>
+        <delimiter>|</delimiter>
+        <hidden_flag>0</hidden_flag>
+        <queries>
+            <sensor_query>
+                <sensor_type>4</sensor_type>
+                <os>0</os>
+                <query>Option Explicit
+
+&#x27;@INCLUDE=utils&#x2F;get-tanium-dir.vbs
+&#x27;@INCLUDE=utils&#x2F;is_64.vbs
+&#x27;@INCLUDE=utils&#x2F;URLDecode.vbs
+&#x27;@INCLUDE=index&#x2F;AppendWhereGlob.vbs
+&#x27;@INCLUDE=index&#x2F;GenerateValidQueryInput.vbs
+&#x27;@INCLUDE=index&#x2F;RemoveTrailingBackslashFromDir.vbs
+
+Dim strCurrentDir,strTaniumEpiDir,fso, strDestPath,strExeName,strDestFilePath,objShell,execed, strLimit
+Dim strDirectoryPathIn,strFileNameIn,strSizeIn,strHashIn,strHashSHA1In,strHashSHA256In,strMagicNumberIn,strLimitIn
+Dim strDirectoryPath,strFileName,strSize,strHash,strHashSHA1,strHashSHA256,strMagicNumber
+Dim intUnixTimeNow,intUnixTimeStart,intLookBkHrs,blnExcludeTCEntries
+
+&#x27;default limit
+strLimit=&quot;10&quot;
+
+strDirectoryPathIn = URLDecode(&quot;||directoryPath||&quot;)
+strFileNameIn = URLDecode(&quot;||fileName||&quot;)
+strSizeIn = URLDecode(&quot;||fileSize||&quot;)
+strHashIn = URLDecode(&quot;||fileMD5Hash||&quot;)
+strHashSHA1In = URLDecode(&quot;||fileSHA1Hash||&quot;)
+strHashSHA256In = URLDecode(&quot;||fileSHA256Hash||&quot;)
+strMagicNumberIn = URLDecode(&quot;||magicNumber||&quot;)
+strLimitIn = URLDecode(&quot;||limit||&quot;)
+intLookBkHrs = URLDecode(&quot;||lookBkHrs||&quot;)
+blnExcludeTCEntries = URLDecode(&quot;||excludeTCEntries||&quot;)
+
+strDirectoryPath = GenerateValidQueryInput(strDirectoryPathIn,&quot;*&quot;)
+strFileName = GenerateValidQueryInput(strFileNameIn,&quot;*&quot;)
+strSize = GenerateValidQueryInput(strSizeIn,&quot;*&quot;)
+strHash = GenerateValidQueryInput(strHashIn,&quot;*&quot;)
+strHashSHA1 = GenerateValidQueryInput(strHashSHA1In,&quot;*&quot;)
+strHashSHA256 = GenerateValidQueryInput(strHashSHA256In,&quot;*&quot;)
+strMagicNumber = GenerateValidQueryInput(strMagicNumberIn,&quot;*&quot;)
+strLimit = GenerateValidQueryInput(strLimitIn,strLimit)
+intUnixTimeNow = UnixDate(Now)
+
+If intLookBkHrs &gt; 168 Then
+  WScript.Echo (&quot;Look back hours exceeds maximum allowed.&quot;)
+  WScript.Quit
+Else
+  intUnixTimeStart = intUnixTimeNow - (intLookBkHrs * 3600)
+End If
+
+strTaniumEpiDir = GetTaniumDir(&quot;Tools\EPI&quot;)
+strExeName = &quot;TaniumEndpointIndex.exe&quot;
+
+Set fso = WScript.CreateObject(&quot;Scripting.Filesystemobject&quot;)
+Set objShell = CreateObject(&quot;WScript.Shell&quot;)
+strDestFilePath = strTaniumEpiDir &amp; strExeName
+
+execed=ExeEPI(fso,objShell, strDestFilePath, strDirectoryPath, strFileName, strSize, strHash, strMagicNumber, strLimit)
+
+Function UnixDate(dtmDate)
+  &#x27; converts a date value to seconds since Unix epoch
+  UnixDate = DateDiff(&quot;s&quot;, &quot;01&#x2F;01&#x2F;1970 00:00:00&quot;, dtmDate)
+End Function
+
+Sub AppendTimeSlice(ByRef strSelect, ByRef strParams, ByVal columnVal)
+  strSelect = strSelect &amp; &quot; AND (Created &gt; ? OR Modified &gt; ?)&quot;
+  If Len(strParams) &lt;&gt; 0  Then
+    strParams = strParams + &quot;|&quot;
+  End If
+  strParams = strParams + CStr(columnVal) + &quot;|&quot; + CStr(columnVal)
+End Sub
+
+Function ExeEPI(ByRef fso, ByRef objShell, ByVal strDestFilePath,ByVal strDirectoryPath, ByVal strFileName,ByVal strSize,ByVal strHash,ByVal strMagicNumber,ByVal strLimit)
+  Dim oExec,strOutput
+  ExeEPI=False
+  If (fso.FileExists(strDestFilePath))Then
+    Dim strCmd, strSelect,strParams
+    strSelect = &quot;SELECT Name, MD5, SHA1, SHA256, Path, Size FROM vFiles WHERE&quot;
+    strSelect = strSelect &amp; &quot; FileId &gt; 0&quot;
+    Call RemoveTrailingBackslashFromDir(strDirectoryPath)
+    Call AppendWhereGlob(strSelect,strParams,&quot;Path&quot;,strDirectoryPath)
+    Call AppendWhereGlob(strSelect,strParams,&quot;Name&quot;,strFileName)
+    Call AppendWhereGlob(strSelect,strParams,&quot;Size&quot;,strSize)
+    Call AppendWhereGlob(strSelect,strParams,&quot;MD5&quot;,strHash)
+    Call AppendWhereGlob(strSelect,strParams,&quot;SHA1&quot;,strHashSHA1)
+    Call AppendWhereGlob(strSelect,strParams,&quot;SHA256&quot;,strHashSHA256)
+    Call AppendWhereGlob(strSelect,strParams,&quot;MagicNumber&quot;,strMagicNumber)
+    Call AppendTimeSlice(strSelect,strParams,intUnixTimeStart)
+    
+    If blnExcludeTCEntries Then
+    	Dim strTCDir: strTCDir = GetTaniumDir(&quot;&quot;)
+    	If Right(strTCDir, 1) = &quot;\&quot; Then
+    		strTCDir = Left(strTCDir, Len(strTCDir) - 1)
+    	End If      
+      strSelect = strSelect &amp; &quot; AND Path Not Like &#x27;%&quot;&amp; strTCDir &amp;&quot;%&#x27;&quot;
+    End If
+    
+    strSelect = strSelect &amp; &quot; LIMIT &quot; &amp; strLimit
+    
+    strCmd=Chr(34)&amp; strDestFilePath &amp;Chr(34)&amp; &quot; -psescape &quot; &amp;Chr(34)&amp; &quot;^&quot; &amp;Chr(34)&amp; &quot; -psprep &quot; &amp;Chr(34)&amp; strSelect &amp;Chr(34)&amp; &quot; -psparams &quot; &amp;Chr(34)&amp; strParams &amp;Chr(34)
+    
+    Set oExec = objShell.Exec(strCmd)
+    Do While True
+      strOutput = strOutput &amp; oExec.StdOut.ReadAll
+      If oExec.Status = 1 Then
+        Exit Do
+      Else
+        WScript.Sleep 10
+      End If
+    Loop
+    strOutput = strOutput &amp; oExec.StdOut.ReadAll
+    WScript.Echo strOutput
+  Else
+    WScript.Echo &quot;Error: Could not find Tanium Endpoint Index&quot;
+  End If
+End Function
+&#x27;------------ INCLUDES after this line. Do not edit past this point -----
+&#x27;- Begin file: utils&#x2F;get-tanium-dir.vbs
+&#x27; get-tanium-dir.vbs
+
+&#x27; Updated to always generate path so that GetTaniumDir can take multiple folder arguments
+&#x27; Updated to always look for the Path string value and not assume a bogus entry
+&#x27; in the wrong area is valid.  A valid entry will always have a Path string value
+&#x27; uses objshell registry reads which should be faster and more reliable
+
+&#x27; All updated versions must have both GetTaniumDir and GeneratePath functions for GetTaniumDir to work
+
+Function GetTaniumDir(strSubDir)
+&#x27;GetTaniumDir with GeneratePath, works in x64 or x32
+&#x27;looks for a valid Path value
+	
+	Dim objShell
+	Dim keyNativePath, keyWoWPath, strPath
+	  
+    Set objShell = CreateObject(&quot;WScript.Shell&quot;)
+    
+	keyNativePath = &quot;HKLM\Software\Tanium\Tanium Client&quot;
+	keyWoWPath = &quot;HKLM\Software\Wow6432Node\Tanium\Tanium Client&quot;
+    
+    &#x27; first check the Software key (valid for 32-bit machines, or 64-bit machines in 32-bit mode)
+    On Error Resume Next
+    strPath = objShell.RegRead(keyNativePath&amp;&quot;\Path&quot;)
+    On Error Goto 0
+ 
+  	If strPath = &quot;&quot; Then
+  		&#x27; Could not find 32-bit mode path, checking Wow6432Node
+  		On Error Resume Next
+  		strPath = objShell.RegRead(keyWoWPath&amp;&quot;\Path&quot;)
+  		On Error Goto 0
+  	End If
+  	
+  	If Not strPath = &quot;&quot; Then
+		If strSubDir &lt;&gt; &quot;&quot; Then
+			strSubDir = &quot;\&quot; &amp; strSubDir
+		End If	
+	
+		Dim fso
+		Set fso = WScript.CreateObject(&quot;Scripting.Filesystemobject&quot;)
+		If fso.FolderExists(strPath) Then
+			If Not fso.FolderExists(strPath &amp; strSubDir) Then
+				&#x27;&#x27;Need to loop through strSubDir and create all sub directories
+				GeneratePath strPath &amp; strSubDir, fso
+			End If
+			GetTaniumDir = strPath &amp; strSubDir &amp; &quot;\&quot;
+		Else
+			&#x27; Specified Path doesn&#x27;t exist on the filesystem
+			WScript.Echo &quot;Error: &quot; &amp; strPath &amp; &quot; does not exist on the filesystem&quot;
+			GetTaniumDir = False
+		End If
+	Else
+		WScript.Echo &quot;Error: Cannot find Tanium Client path in Registry&quot;
+		GetTaniumDir = False
+	End If
+End Function &#x27;GetTaniumDir
+
+Function GeneratePath(pFolderPath, fso)
+	GeneratePath = False
+
+	If Not fso.FolderExists(pFolderPath) Then
+		If GeneratePath(fso.GetParentFolderName(pFolderPath), fso) Then
+			GeneratePath = True
+			Call fso.CreateFolder(pFolderPath)
+		End If
+	Else
+		GeneratePath = True
+	End If
+End Function &#x27;GeneratePath
+&#x27;- End file: utils&#x2F;get-tanium-dir.vbs
+&#x27;- Begin file: utils&#x2F;is_64.vbs
+&#x27; is_64.vbs
+
+&#x27; Allows checking to see if the current machine is a 64 or 32 bit system
+
+Function Is64 
+	Dim objWMIService, colItems, objItem
+	Set objWMIService = GetObject(&quot;winmgmts:\\.\root\CIMV2&quot;)
+	Set colItems = objWMIService.ExecQuery(&quot;Select SystemType from Win32_ComputerSystem&quot;)    
+	For Each objItem In colItems
+		If InStr(LCase(objItem.SystemType), &quot;x64&quot;) &gt; 0 Then
+			Is64 = True
+		Else
+			Is64 = False
+		End If
+	Next
+End Function
+&#x27;- End file: utils&#x2F;is_64.vbs
+&#x27;- Begin file: utils&#x2F;URLDecode.vbs
+&#x27;========================================
+&#x27; URLDecode
+&#x27;========================================
+&#x27; Used to convert the UTF-8 style parameters passed from 
+&#x27; the server to sensors in sensor parameters.
+&#x27; This function should be used to safely pass non english input to sensors.
+&#x27;-----
+&#x27;-----
+Function URLDecode(str)
+    Dim arraylist(), strLen, i, sT, val, depth, sR
+    Dim arraysize
+    arraysize = 0
+    strLen = Len(str)
+    for i = 1 to strLen
+        sT = mid(str, i, 1)
+        if sT = &quot;%&quot; then
+            if i + 2 &lt;= strLen then
+                Redim Preserve arraylist(arraysize + 1)
+                arraylist(arraysize) = cbyte(&quot;&amp;H&quot; &amp; mid(str, i + 1, 2))
+                arraysize = arraysize + 1
+                i = i + 2
+            end if
+        else
+            Redim Preserve arraylist(arraysize + 1)
+            arraylist(arraysize) = asc(sT)
+            arraysize = arraysize + 1
+        end if
+    next
+    depth = 0
+    for i = 0 to arraysize - 1
+		Dim mybyte
+        mybyte = arraylist(i)
+        if mybyte and &amp;h80 then
+            if (mybyte and &amp;h40) = 0 then
+                if depth = 0 then
+                    Err.Raise 5
+                end if
+                val = val * 2 ^ 6 + (mybyte and &amp;h3f)
+                depth = depth - 1
+                if depth = 0 then
+                    sR = sR &amp; chrw(val)
+                    val = 0
+                end if
+            elseif (mybyte and &amp;h20) = 0 then
+                if depth &gt; 0 then Err.Raise 5
+                val = mybyte and &amp;h1f
+                depth = 1
+            elseif (mybyte and &amp;h10) = 0 then
+                if depth &gt; 0 then Err.Raise 5
+                val = mybyte and &amp;h0f
+                depth = 2
+            else
+                Err.Raise 5
+            end if
+        else
+            if depth &gt; 0 then Err.Raise 5
+            sR = sR &amp; chrw(mybyte)
+        end if
+    next
+    if depth &gt; 0 then Err.Raise 5
+    URLDecode = sR
+End Function
+&#x27;- End file: utils&#x2F;URLDecode.vbs
+&#x27;- Begin file: index&#x2F;AppendWhereGlob.vbs
+Sub AppendWhereGlob(ByRef strSelect, ByRef strParams, ByVal columnName, ByVal columnVal)
+	If (StrComp(&quot;*&quot;, columnVal) &lt;&gt; 0) Then
+		strSelect = strSelect &amp; &quot; AND &quot; &amp; columnName &amp; &quot; LIKE ?&quot;
+		If Len(strParams) &lt;&gt; 0  Then
+			strParams = strParams + &quot;|&quot;
+		End If
+		strParams = strParams + GlobToLike(columnVal)
+	End If
+End Sub
+
+Function GlobToLike(byVal strGlob)
+	GlobToLike = strGlob
+
+	GlobToLike = Replace(GlobToLike, &quot;^&quot;, &quot;^^&quot;)
+	GlobToLike = Replace(GlobToLike, &quot;*&quot;, &quot;^%&quot;)
+	GlobToLike = Replace(GlobToLike, &quot;?&quot;, &quot;_&quot;)
+End Function
+&#x27;- End file: index&#x2F;AppendWhereGlob.vbs
+&#x27;- Begin file: index&#x2F;GenerateValidQueryInput.vbs
+Function GenerateValidQueryInput(ByVal strIn, ByVal strDefaultValue)
+	If Len(strIn) = 0 Then
+		If Len(strDefaultValue) = 0 Then
+			GenerateValidQueryInput=&quot;*&quot;
+		Else
+			GenerateValidQueryInput=strDefaultValue
+		End If
+	Else
+		GenerateValidQueryInput = strIn
+	End If
+End Function
+&#x27;- End file: index&#x2F;GenerateValidQueryInput.vbs
+&#x27;- Begin file: index&#x2F;RemoveTrailingBackslashFromDir.vbs
+Sub RemoveTrailingBackslashFromDir(ByRef strDirectoryPath)
+	Dim strDirectoryPathLen
+
+	strDirectoryPathLen = Len(strDirectoryPath)
+	If strDirectoryPathLen &gt; 1 Then
+		If Right(strDirectoryPath, 1) = &quot;\&quot; Then
+			strDirectoryPath = Left(strDirectoryPath, Len(strDirectoryPath)-1)
+		End If
+	End If
+End Sub
+&#x27;- End file: index&#x2F;RemoveTrailingBackslashFromDir.vbs</query>
+                <signature></signature>
+            </sensor_query>
+            <sensor_query>
+                <sensor_type>6</sensor_type>
+                <os>1</os>
+                <query>#!&#x2F;bin&#x2F;sh
+
+# THIS IS A STUB - NOT INTENDED AS FUNCTIONAL - NA
+# 
+# ||directoryPath||  ||fileName||  ||fileSize||  ||fileMD5Hash||  ||fileSHA1Hash||  ||fileSHA256Hash||  ||magicNumber||  ||lookBkHrs||  ||limit||  ||excludeTCEntries||  
+
+echo &quot;N&#x2F;A on Linux&quot;
+</query>
+                <signature></signature>
+            </sensor_query>
+            <sensor_query>
+                <sensor_type>6</sensor_type>
+                <os>2</os>
+                <query>#!&#x2F;bin&#x2F;sh
+
+# make sure we&#x27;re operating from the right place
+# To get to the TC install directory on a sensor go to &quot;.&quot;.
+# To get to the TC install directory in an action, go to &quot;..&#x2F;..&quot;.
+
+taniumpath=$(pwd)
+Toolspath=&quot;${taniumpath}&#x2F;Tools&quot;
+EPIpath=&quot;${Toolspath}&#x2F;EPI&quot;
+
+EPI=&quot;${EPIpath}&#x2F;TaniumEndpointIndex&quot;
+
+if ! [ -d &quot;$taniumpath&quot; ]; then
+  echo &quot;Error: $taniumpath does not exist on the filesystem&quot;
+  exit
+fi
+
+if ! [ -x &quot;$EPI&quot; ]; then
+  echo &quot;Error: Could not find Tanium Endpoint Index&quot;
+  exit
+fi
+
+percent_decode() {
+  local data=$(echo &quot;$1&quot; | sed &#x27;s&#x2F;%&#x2F;\\\x&#x2F;g&#x27;)
+  printf &#x27;%b&#x27; &quot;$data&quot;
+}
+
+GenerateValidQueryInput() {
+  local strIn=&quot;$1&quot;
+  local strDefaultValue=&quot;$2&quot;
+  if [ &quot;$strIn&quot; = &quot;&quot; ] || [ &quot;`echo &quot;$strIn&quot; | egrep -v &#x27;^\|\|&#x27;`&quot; = &quot;&quot; ]; then
+    if [ &quot;$strDefaultValue&quot; = &quot;&quot; ]; then
+      echo \*
+    else
+      echo &quot;$strDefaultValue&quot;
+    fi
+  else
+    # remove any trailing backslash
+    echo &quot;$strIn&quot; | sed -e &#x27;s&#x2F;\\$&#x2F;&#x2F;&#x27;
+  fi
+}
+
+GlobToLike() {
+  local strGlob=&quot;$1&quot;
+  strGlob=$(echo &quot;$strGlob&quot; | sed &#x27;s&#x2F;\?&#x2F;\_&#x2F;g&#x27;)
+  strGlob=$(echo &quot;$strGlob&quot; | sed &#x27;s&#x2F;\*&#x2F;\%&#x2F;g&#x27;)
+  echo &quot;$strGlob&quot;
+}
+
+# note: this has a side-effect of changing global strings $strSelect and $strParams
+AppendWhereGlob() {
+  local columnName=$1
+  local columnVal=$2
+  if ! [ &quot;$columnVal&quot; = &quot;*&quot; ]; then
+    strSelect=&quot;${strSelect} AND ${columnName} LIKE ?&quot;
+    if ! [ &quot;$strParams&quot; = &quot;&quot; ]; then
+      strParams=&quot;${strParams}|&quot;
+    fi
+    local param=`GlobToLike &quot;$columnVal&quot;`
+    strParams=&quot;${strParams}${param}&quot;
+  fi
+}
+
+AppendTimeSlice() {
+  local columnVal=$1
+  strSelect=&quot;${strSelect} AND (Created &gt; ? OR Modified &gt; ?)&quot;
+  if ! [ &quot;$strParams&quot; = &quot;&quot; ]; then
+    strParams=&quot;${strParams}|&quot;
+  fi
+  strParams=&quot;${strParams}${columnVal}|${columnVal}&quot;
+}
+
+# default limit
+strLimit=10
+
+strDirectoryPathIn=`percent_decode &quot;||directoryPath||&quot;`
+strFileNameIn=`percent_decode &quot;||fileName||&quot;`
+strSizeIn=`percent_decode &quot;||fileSize||&quot;`
+strHashIn=`percent_decode &quot;||fileMD5Hash||&quot;`
+strHashSHA1In=`percent_decode &quot;||fileSHA1Hash||&quot;`
+strHashSHA256In=`percent_decode &quot;||fileSHA256Hash||&quot;`
+strMagicNumberIn=`percent_decode &quot;||magicNumber||&quot;`
+strLimitIn=`percent_decode &quot;||limit||&quot;`
+intLookBkHrs=`percent_decode &quot;||lookBkHrs||&quot;`
+blnExcludeTCEntries=`percent_decode &quot;||excludeTCEntries||&quot;`
+
+strDirectoryPath=`GenerateValidQueryInput &quot;$strDirectoryPathIn&quot; &quot;*&quot;`
+strFileName=`GenerateValidQueryInput &quot;$strFileNameIn&quot; &quot;*&quot;`
+strSize=`GenerateValidQueryInput &quot;$strSizeIn&quot; &quot;*&quot;`
+strHash=`GenerateValidQueryInput &quot;$strHashIn&quot; &quot;*&quot;`
+strHashSHA1=`GenerateValidQueryInput &quot;$strHashSHA1In&quot; &quot;*&quot;`
+strHashSHA256=`GenerateValidQueryInput &quot;$strHashSHA256In&quot; &quot;*&quot;`
+strMagicNumber=`GenerateValidQueryInput &quot;$strMagicNumberIn&quot; &quot;*&quot;`
+strLimit=`GenerateValidQueryInput &quot;$strLimitIn&quot; $strLimit`
+intUnixTimeNow=$(date +%s)
+
+if [ $intLookBkHrs -gt 168 ]; then
+  echo &quot;Look back hours exceeds maximum allowed.&quot;
+  exit
+else
+  intUnixTimeStart=$(($intUnixTimeNow - $(($intLookBkHrs * 3600))))
+fi
+
+strSelect=&quot;SELECT Name, MD5, SHA1, SHA256 FROM vFiles WHERE FileId &gt; 0&quot;
+strParams=&quot;&quot;
+
+# remove trailing slash from directory path
+lastChar=`echo &quot;$strDirectoryPath&quot; | tail -c 2`
+if [ &quot;$lastChar&quot; = &#x27;&#x2F;&#x27; ]; then
+  lastCharPos=$((${#strDirectoryPath}-1))
+  if [ $lastCharPos -gt 0 ]; then
+    strDirectoryPath=&quot;`echo &quot;$strDirectoryPath&quot; | head -c $lastCharPos`&quot;
+  fi
+fi
+AppendWhereGlob &quot;Path&quot; &quot;$strDirectoryPath&quot;
+AppendWhereGlob &quot;Name&quot; &quot;$strFileName&quot;
+AppendWhereGlob &quot;Size&quot; &quot;$strSize&quot;
+AppendWhereGlob &quot;MD5&quot; &quot;$strHash&quot;
+AppendWhereGlob &quot;SHA1&quot; &quot;$strHashSHA1&quot;
+AppendWhereGlob &quot;SHA256&quot; &quot;$strHashSHA256&quot;
+AppendWhereGlob &quot;MagicNumber&quot; &quot;$strMagicNumber&quot;
+AppendTimeSlice $intUnixTimeStart
+
+if [ $blnExcludeTCEntries ]; then
+  strSelect=&quot;${strSelect} AND Path Not Like &#x27;%${taniumpathBase}%&#x27;&quot;
+fi
+
+strSelect=&quot;${strSelect} LIMIT ${strLimit}&quot;
+
+strCmd=&quot;${EPI} -psprep \&quot;${strSelect}\&quot; -psparams \&quot;${strParams}\&quot;&quot;
+
+eval ${strCmd} | while read line; do
+echo $line
+done
+</query>
+                <signature></signature>
+            </sensor_query>
+            <sensor_query>
+                <sensor_type>6</sensor_type>
+                <os>3</os>
+                <query>#!&#x2F;bin&#x2F;sh
+
+# THIS IS A STUB - NOT INTENDED AS FUNCTIONAL - NA
+# 
+# ||directoryPath||  ||fileName||  ||fileSize||  ||fileMD5Hash||  ||fileSHA1Hash||  ||fileSHA256Hash||  ||magicNumber||  ||lookBkHrs||  ||limit||  ||excludeTCEntries||  
+
+echo &quot;N&#x2F;A on Solaris&quot;
+</query>
+                <signature></signature>
+            </sensor_query>
+            <sensor_query>
+                <sensor_type>6</sensor_type>
+                <os>4</os>
+                <query>#!&#x2F;bin&#x2F;sh
+
+# THIS IS A STUB - NOT INTENDED AS FUNCTIONAL - NA
+# 
+# ||directoryPath||  ||fileName||  ||fileSize||  ||fileMD5Hash||  ||fileSHA1Hash||  ||fileSHA256Hash||  ||magicNumber||  ||lookBkHrs||  ||limit||  ||excludeTCEntries||  
+
+echo &quot;N&#x2F;A on AIX&quot;
+</query>
+                <signature></signature>
+            </sensor_query>
+        </queries>
+        <columns>
+            <column>
+                <column_index>0</column_index>
+                <name>File Name</name>
+                <hidden_flag>0</hidden_flag>
+                <result_type>1</result_type>
+                <ignore_case_flag>1</ignore_case_flag>
+                <exclude_from_parse>0</exclude_from_parse>
+            </column>
+            <column>
+                <column_index>1</column_index>
+                <name>MD5</name>
+                <hidden_flag>0</hidden_flag>
+                <result_type>1</result_type>
+                <ignore_case_flag>1</ignore_case_flag>
+                <exclude_from_parse>0</exclude_from_parse>
+            </column>
+            <column>
+                <column_index>2</column_index>
+                <name>SHA1</name>
+                <hidden_flag>1</hidden_flag>
+                <result_type>1</result_type>
+                <ignore_case_flag>1</ignore_case_flag>
+                <exclude_from_parse>0</exclude_from_parse>
+            </column>
+            <column>
+                <column_index>3</column_index>
+                <name>SHA256</name>
+                <hidden_flag>1</hidden_flag>
+                <result_type>1</result_type>
+                <ignore_case_flag>1</ignore_case_flag>
+                <exclude_from_parse>0</exclude_from_parse>
+            </column>
+            <column>
+                <column_index>4</column_index>
+                <name>Path</name>
+                <hidden_flag>0</hidden_flag>
+                <result_type>1</result_type>
+                <ignore_case_flag>1</ignore_case_flag>
+                <exclude_from_parse>0</exclude_from_parse>
+            </column>
+            <column>
+                <column_index>5</column_index>
+                <name>Size</name>
+                <hidden_flag>0</hidden_flag>
+                <result_type>1</result_type>
+                <ignore_case_flag>1</ignore_case_flag>
+                <exclude_from_parse>0</exclude_from_parse>
+            </column>
+        </columns>
+        <meta_data>
+            <meta_data_item>
+                <name>TANIUMCONTENT_description.en</name>
+                <value>The Index Query File Hash Recently Changed sensor returns filenames and hashes for files that have been created or modified within a given number of hours. One use case for this sensor would be to search for binary files that have been crated or modified under C:\Windows\System32\ in the previous 8 hours. By searching for files with a File Magic Number glob of 4D5A*, you can focus your search on Windows PE binary files (exes and dlls).</value>
+                <admin_flag>0</admin_flag>
+            </meta_data_item>
+        </meta_data>
+    </sensor>
+</content>
